@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Contact ME</title>
+        <link href="mystyle.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <h1 id="main-hdr">Contact ME</h1>
+
+        <form action="./save_contact.php">
+            <table cellpadding="10" cellspacing="10">
+                <tr>
+                    <td>
+                        <p class="cm-name">Name:
+                            <input type="text" name="name" size="15" maxlength="30" />
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <p class="cm-visit">Would you visit this site again?<br />
+                            <input type="radio" name="answer"
+                            value="yes" checked="checked" /> Yes
+                            <input type="radio" name="answer"
+                            value="no" /> No
+                        </p>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td>
+                        <p class="cm-comments">What did you think of my page?</p>
+                        <textarea name="comments" rows="4" cols="20">Enter your comments...</textarea>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td>
+                        <input type="submit" value="Send Email" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <a href="index.html">Return to HOME</a>
+    </body>
+</html>
