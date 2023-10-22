@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$db_host="root@127.0.0.1:3306";
+$db_host="127.0.0.1:22";
 $db_user="ptg426";
 $db_pass="superuser";
 $db_name="z_url_set_1"; // Do not change
