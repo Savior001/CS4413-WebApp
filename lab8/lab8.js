@@ -5,18 +5,12 @@ function getDataFromForm() {
 }
 
 function runAjax(fname, lname) {
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("GET", `./ajax.php?fname=${fname}&lname=${lname}`, true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            const responseText = xhr.responseText;
-            if (typeof responseText === 'string') {
-                const responseParagraph = document.getElementById("responseString");
-                responseParagraph.textContent = responseText;
-            }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        if (typeof this.responseText === 'string') {
+            document.getElementById('responseString').innerHTML = this.responseText;
         }
     };
-
-    xhr.send();
+    xhttp.open("GET", `ajax.php?fname=${fname}&lname=${lname}`, true);
+    xhttp.send();
 }
