@@ -36,3 +36,9 @@ if($result->num_rows  > 0) {
 
 $db_conn->close();
 
+$currentDirectory = dirname($_SERVER['PHP_SELF']);
+$parentDirectory = dirname($currentDirectory);
+
+?>
+<br />
+<a href="<?php echo $parentDirectory; ?>/index.html">Return to Labs page</a>
