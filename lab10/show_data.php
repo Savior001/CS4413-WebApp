@@ -13,5 +13,8 @@ foreach ($data_array as $line) {
     echo '<tr><td>' . htmlspecialchars($first_name) . '</td><td>' . htmlspecialchars($last_name) . '</td></tr>';
 }
 echo '</table>';
+echo '<a href="index.html">Return to Data Entry Form</a>';
+echo '<br />';
+echo '<a href="../index.html">Return to Labs page</a>';
 echo '</body></html>';
 ?>
