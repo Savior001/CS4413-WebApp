@@ -5,8 +5,8 @@ $data_file = '../datafiles/data.txt';
 
 $data_array = file($data_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-echo '<html><head><title>Data Viewer</title></head><body>';
-echo '<h1>Data Viewer</h1>';
+echo '<html><head><title>Names Entry Form</title></head><body>';
+echo '<h1>List of Names</h1>';
 echo '<table border="1"><tr><th>First Name</th><th>Last Name</th></tr>';
 foreach ($data_array as $line) {
     list($first_name, $last_name) = explode(' ', $line, 2);
