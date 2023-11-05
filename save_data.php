@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = $first_name . ' ' . $last_name . PHP_EOL;
 
     
-    $data_file = 'datafiles/data.txt';
+    $data_file = '../datafiles/data.txt';
 
     file_put_contents($data_file, $data, FILE_APPEND);
 
