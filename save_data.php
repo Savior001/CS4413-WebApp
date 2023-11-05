@@ -10,12 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $data_file = 'datafiles/data.txt';
 
-    if (file_put_contents($data_file, $data, FILE_APPEND) !== false) {
-        echo "Saved data to the file.";
-        exit;
-    } else {
-        echo "Failed to save data to the file.";
-    }
+    file_put_contents($data_file, $data, FILE_APPEND)
 
     header('Location: lab10/index.html');
     exit;
