@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$db_host="cs4413-webapp-database.mysql.database.azure.com";
+$db_host="cs4413-mysql-server.mysql.database.azure.com";
 $db_user="ptg426";
 $db_pass="superuser";
 $db_name="z_url_set_1"; // Do not change
