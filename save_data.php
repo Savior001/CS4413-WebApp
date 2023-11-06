@@ -4,25 +4,21 @@ require_once 'vendor/autoload.php';
 use Azure\Core\AzureCliCredential;
 use Azure\Storage\Blobs\BlobServiceClient;
 use Azure\Storage\Blobs\Models\CreateContainerOptions;
-use Azure\Storage\Blobs\Models\BlobStreamOptions;
+use Azure\Storage\Blobs\Models\ListBlobsOptions;
 
-static function UploadBlob(string $accountName, string $containerName, string $blobName, string $blobContents): void {
-    $blobServiceClient = new BlobServiceClient('https://' . $accountName . '.blob.core.windows.net', new AzureCliCredential());
+$blobServiceClient = new BlobServiceClient('https://cs4413webappstorage.blob.core.windows.net/cs4413-blob', new AzureCliCredential());
+$containerName = 'cs4413-blob';
 
-    $containerClient = $blobServiceClient->getContainerClient($containerName);
-    if (!$containerClient->exists()) {
-        $containerClient->create(new CreateContainerOptions());
-    }
+$containerClient = $blobServiceClient->getContainerClient($containerName);
+if (!$containerClient->exists()) {
+    $containerClient->create(new CreateContainerOptions());
+}
 
-    $blobClient = $containerClient->getBlobClient($blobName);
-    $blobStreamOptions = new BlobStreamOptions();
-    $blobStreamOptions->setAccessTier('Hot'); 
-    $blobStreamOptions->setContentType('text/plain');
-    $blobStreamOptions->setContentLanguage('en-US');
-    $blobStreamOptions->setContentDisposition('attachment');
-    $blobStreamOptions->setContentEncoding('gzip');
-    $blobStreamOptions->setContentMD5(base64_encode(md5($blobContents, true)));
-    $blobClient->uploadData($blobContents, $blobStreamOptions);
+$listBlobsOptions = new ListBlobsOptions();
+$blobs = $containerClient->listBlobs($listBlobsOptions);
+
+foreach ($blobs as $blobItem) {
+    echo 'Blob Name: ' . $blobItem->getName() . PHP_EOL;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,6 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_file = 'datafiles/data.txt';
 
     file_put_contents($data_file, $data, FILE_APPEND);
-    UploadBlob('cs4413webappstorage', 'cs4413-blob', 'data.txt', $data);
 }
+
+$blobClient = $containerClient->getBlobClient('data.txt');
+$blobClient->upload($data, strlen($data));
+
+$blobContents = $blobClient->download()->getContentStream()->readAll();
+
+echo 'Downloaded Blob Contents: ' . $blobContents;
+
+$blobClient->delete();
+$containerClient->delete();
+$blobServiceClient->close();
 ?>

@@ -1,0 +1,5 @@
+{
+    "require": {
+        "azure/azure-storage-blob": "^12.0"
+    }
+}
