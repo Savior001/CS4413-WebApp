@@ -7,7 +7,7 @@ use Azure\Storage\Blobs\Models\CreateContainerOptions;
 use Azure\Storage\Blobs\Models\ListBlobsOptions;
 
 $blobServiceClient = new BlobServiceClient('https://cs4413webappstorage.blob.core.windows.net/cs4413-blob', new AzureCliCredential());
-$containerName = 'cs4413-blob';
+$containerName = 'cs4413webappstorage';
 
 $containerClient = $blobServiceClient->getContainerClient($containerName);
 if (!$containerClient->exists()) {
