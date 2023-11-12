@@ -8,5 +8,4 @@ if (isset($_COOKIE['cs4413'])) {
     echo "The 'cs4413' cookie has been set with the value: $cookieValue and will expire in 1 hour.";
 }
 ?>
-<h1>Welcome</h1>
 <p><?= $message ?></p>
